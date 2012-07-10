@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>Life</title>
+	<script type="text/javascript" src="js/classes/unit.js"></script>
+<script type="text/javascript">
+	var unit1;
+	var unit2;
+
+	var context;
+	var w_width=500;
+	var w_height=400;
+
+	function init()
+	{
+	  context= world.getContext('2d');
+	  unit1 = new Unit("#0000ff");
+	  unit2 = new Unit("#fff000");
+
+	  setInterval(draw,20);
+	}
+
+	function draw()
+	{
+		context.clearRect(0,0, 500,400);
+		unit1.draw(context);
+		unit2.draw(context);
+
+		//alert(unit1.x + ' - ' + unit2.x);
+	}
+</script>
+
+</head>
+<body>
+
+<a href="#" onclick="init()">Start World</a><br/><br/>
+
+<canvas id='world' width="500" height="400" style="border:solid 1px black;"></canvas>
+
+</body>
+</html>
