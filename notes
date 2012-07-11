@@ -1,1 +1,6 @@
 http://stackoverflow.com/questions/10396991/clearing-circular-regions-from-html5-canvas
+
+Todo
+- Cells need to die
+- If two cells touching they mate not duplicate
+- Two cells cannot be on top of each other? --Actually maybe that makes sense!!

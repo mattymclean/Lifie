@@ -2,39 +2,86 @@
 <head>
 	<title>Life</title>
 	<script type="text/javascript" src="js/classes/unit.js"></script>
-<script type="text/javascript">
-	var unit1;
-	var unit2;
+	<script type="text/javascript">
+		var units = [];  
 
-	var context;
-	var w_width=500;
-	var w_height=400;
+		var unit1;
+		var unit2;
 
-	function init()
-	{
-	  context= world.getContext('2d');
-	  unit1 = new Unit("#0000ff");
-	  unit2 = new Unit("#fff000");
+		var intervalId = null;
+		var context;
+		var w_width=500;
+		var w_height=400;
 
-	  setInterval(draw,20);
-	}
+		function init()
+		{
+		  context = world.getContext('2d');
+		  units[0] = new Unit("#0000ff");
+		  units[1] = new Unit("#ff0000");
+		  units[2] = new Unit("#FF00FF");
+		  units[3] = new Unit("#ffff00");
 
-	function draw()
-	{
-		context.clearRect(0,0, 500,400);
-		unit1.draw(context);
-		unit2.draw(context);
+		  clearInterval(intervalId);
+		  intervalId = setInterval(draw,20);
+		}
 
-		//alert(unit1.x + ' - ' + unit2.x);
-	}
-</script>
+		function draw()
+		{
+			context.clearRect(0,0, 500,400);
+
+			var len = units.length;
+			for (var i=0;i < len; i++)
+			{
+				var output = units[i].process(context);
+				if (output.duplicate)
+				{
+					var currentLen = units.length;
+					units[currentLen] = new Unit(units[i].color);	
+					units[currentLen].x = units[i].x;
+					units[currentLen].y = units[i].y;
+				}
+			}
+
+			if (checkCollision())
+			{
+				units[units.length] = new Unit("000000");
+			}
+			//alert(unit1.x + ' - ' + unit2.x);
+		}
+
+		function checkCollision()
+		{
+			var len = units.length;
+			for (var i=0;i < len; i++)
+			{
+				for (var k=0;k < len; k++)
+				{
+					if (i != k)
+					{
+						if (units[i].x == units[k].x && units[i].y == units[k].y)
+						{
+							//alert(units[i].color + ' ' + units[k].color);
+							//return true;
+							return false; //for now
+						}
+					}
+				}
+			}
+
+			return false;
+		}
+	</script>
 
 </head>
 <body>
 
 <a href="#" onclick="init()">Start World</a><br/><br/>
 
-<canvas id='world' width="500" height="400" style="border:solid 1px black;"></canvas>
+<div style="background-color:#000;width:500px;height:400px;">
+	<canvas id='world' width="500" height="400" style="border:solid 1px black;"></canvas>
+</div>
+<br/>
+Stats to the left / Log below
 
 </body>
 </html>

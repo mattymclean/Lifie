@@ -22,24 +22,6 @@
 				"buffer_size": 689,
 				"line_ending": "Windows"
 			}
-		},
-		{
-			"file": "source/js/classes/unit.js",
-			"settings":
-			{
-				"buffer_size": 652,
-				"line_ending": "Windows",
-				"name": "function Apple (type) {"
-			}
-		},
-		{
-			"file": "notes",
-			"settings":
-			{
-				"buffer_size": 87,
-				"line_ending": "Windows",
-				"name": "http://stackoverflow.com/questions/10396991/cleari"
-			}
 		}
 	],
 	"build_system": "",
@@ -66,6 +48,9 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Matt/Documents/GitHub/Lifie/notes",
+		"/C/Users/Matt/Documents/GitHub/Lifie/source/js/classes/unit.js",
+		"/C/Users/Matt/Documents/GitHub/Lifie/source/life.html",
 		"/C/Users/Matt/Documents/Life/life.html",
 		"/C/Users/Matt/Documents/Life/js/jquery-1.7.2.min.js"
 	],
@@ -75,7 +60,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 		]
@@ -117,68 +102,14 @@
 						"selection":
 						[
 							[
-								689,
-								689
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "source/js/classes/unit.js",
-					"settings":
-					{
-						"buffer_size": 652,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								43,
-								43
-							]
-						],
-						"settings":
-						{
-							"auto_name": "function Apple (type) {",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "notes",
-					"settings":
-					{
-						"buffer_size": 87,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								87,
-								87
-							]
-						],
-						"settings":
-						{
-							"auto_name": "http://stackoverflow.com/questions/10396991/cleari",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
