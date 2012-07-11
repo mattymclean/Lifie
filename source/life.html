@@ -1,87 +1,28 @@
 <html>
 <head>
 	<title>Life</title>
-	<script type="text/javascript" src="js/classes/unit.js"></script>
-	<script type="text/javascript">
-		var units = [];  
-
-		var unit1;
-		var unit2;
-
-		var intervalId = null;
-		var context;
-		var w_width=500;
-		var w_height=400;
-
-		function init()
-		{
-		  context = world.getContext('2d');
-		  units[0] = new Unit("#0000ff");
-		  units[1] = new Unit("#ff0000");
-		  units[2] = new Unit("#FF00FF");
-		  units[3] = new Unit("#ffff00");
-
-		  clearInterval(intervalId);
-		  intervalId = setInterval(draw,20);
-		}
-
-		function draw()
-		{
-			context.clearRect(0,0, 500,400);
-
-			var len = units.length;
-			for (var i=0;i < len; i++)
-			{
-				var output = units[i].process(context);
-				if (output.duplicate)
-				{
-					var currentLen = units.length;
-					units[currentLen] = new Unit(units[i].color);	
-					units[currentLen].x = units[i].x;
-					units[currentLen].y = units[i].y;
-				}
-			}
-
-			if (checkCollision())
-			{
-				units[units.length] = new Unit("000000");
-			}
-			//alert(unit1.x + ' - ' + unit2.x);
-		}
-
-		function checkCollision()
-		{
-			var len = units.length;
-			for (var i=0;i < len; i++)
-			{
-				for (var k=0;k < len; k++)
-				{
-					if (i != k)
-					{
-						if (units[i].x == units[k].x && units[i].y == units[k].y)
-						{
-							//alert(units[i].color + ' ' + units[k].color);
-							//return true;
-							return false; //for now
-						}
-					}
-				}
-			}
-
-			return false;
-		}
-	</script>
-
+	<link rel="stylesheet" href="_assets/css/default.css" />
+	<script type="text/javascript" src="_assets/js/unit.js"></script>
+	<script type="text/javascript" src="_assets/js/main.js"></script>
 </head>
 <body>
 
-<a href="#" onclick="init()">Start World</a><br/><br/>
 
-<div style="background-color:#000;width:500px;height:400px;">
-	<canvas id='world' width="500" height="400" style="border:solid 1px black;"></canvas>
+<div style="width:100%;height:50px;">
+	<a href="#" onclick="init()">Start World</a><br/><br/>
 </div>
-<br/>
-Stats to the left / Log below
+<div style="width:70%;height:100%;float:left;">
+	<div style="background-color:#000;width:500px;height:400px;">
+		<canvas id='world' width="500" height="400" style="border:solid 1px white;"></canvas>
+	</div>
+</div>
+<div style="width:30%;height:100%;float:right;">
+	Life count: <span id='lifeCount'></span><br/>
+	Death count: <span id='deathCount'></span><br/>
+	<br/>
+	Log:
+	<div id="log" style="height:400px;overflow-y:scroll;"></div>
+</div>
 
 </body>
 </html>

@@ -4,3 +4,7 @@ Todo
 - Cells need to die
 - If two cells touching they mate not duplicate
 - Two cells cannot be on top of each other? --Actually maybe that makes sense!!
+- System to mate/kill each other
+- Random colors: http://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmatically/
+- Create chance for abnormalities?
+- Create algorith for random numbers based on probability: http://excel.bigresource.com/Track/excel-n04kwXhV/

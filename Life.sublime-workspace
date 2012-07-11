@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Unit",
+				"UnitOutput"
+			],
+			[
 				"unit",
 				"unit1"
 			],
@@ -19,7 +23,39 @@
 			"file": "source/life.html",
 			"settings":
 			{
-				"buffer_size": 689,
+				"buffer_size": 802,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/main.js",
+			"settings":
+			{
+				"buffer_size": 1980,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/unit.js",
+			"settings":
+			{
+				"buffer_size": 1440,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/css/default.css",
+			"settings":
+			{
+				"buffer_size": 65,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "notes",
+			"settings":
+			{
+				"buffer_size": 518,
 				"line_ending": "Windows"
 			}
 		}
@@ -48,6 +84,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Matt/Documents/GitHub/Lifie/Life.sublime-project",
 		"/C/Users/Matt/Documents/GitHub/Lifie/notes",
 		"/C/Users/Matt/Documents/GitHub/Lifie/source/js/classes/unit.js",
 		"/C/Users/Matt/Documents/GitHub/Lifie/source/life.html",
@@ -56,11 +93,11 @@
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 		]
@@ -70,6 +107,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"get_random_int"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -95,21 +133,127 @@
 					"file": "source/life.html",
 					"settings":
 					{
-						"buffer_size": 689,
+						"buffer_size": 802,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								770,
+								770
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "source/_assets/js/main.js",
+					"settings":
+					{
+						"buffer_size": 1980,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								199,
+								199
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 791.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "source/_assets/js/unit.js",
+					"settings":
+					{
+						"buffer_size": 1440,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								350,
+								350
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 195.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "source/_assets/css/default.css",
+					"settings":
+					{
+						"buffer_size": 65,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								57,
+								57
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "notes",
+					"settings":
+					{
+						"buffer_size": 518,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								518,
+								518
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
