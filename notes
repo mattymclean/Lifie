@@ -1,10 +1,23 @@
 http://stackoverflow.com/questions/10396991/clearing-circular-regions-from-html5-canvas
 
 Todo
-- Cells need to die
 - If two cells touching they mate not duplicate
 - Two cells cannot be on top of each other? --Actually maybe that makes sense!!
 - System to mate/kill each other
 - Random colors: http://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmatically/
 - Create chance for abnormalities?
 - Create algorith for random numbers based on probability: http://excel.bigresource.com/Track/excel-n04kwXhV/
+
+
+Ideas
+- Death: time / no resources
+- Mating: How do I make it not too random. (color mixer: http://www.w3schools.com/tags/ref_colormixer.asp)
+
+Trait Ideas
+ - Agressive / Passive (run away)
+ - Home body / Wanderer
+ - Mater (might have more chance of being bigger/hardier/live longer?) / Self producer (easier to come by / dont last as long)
+ - Big (requires more food but better fighter?) / small (requires less food but worse fighter?)
+
+ References
+  - http://gamemath.com/

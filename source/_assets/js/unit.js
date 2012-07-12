@@ -2,7 +2,7 @@ function Unit () {
 	this.color = get_random_color();
 	this.size = get_random_int(1, 5);
 	this.ticks = 0;
-	this.lifespan = get_random_int(1, 20000);
+	this.lifespan = get_random_int(1, 6000);
     this.x=get_random_int(0, 500);
 	this.y=get_random_int(0, 400);
 
