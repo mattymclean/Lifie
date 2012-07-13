@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"mainInterval",
+				"mainIntervalLock"
+			],
+			[
+				"drawInterv",
+				"drawIntervalLock"
+			],
+			[
+				"draw",
+				"drawIntervalLock"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"sp",
+				"splicedUnits"
+			],
+			[
+				"pa",
+				"parentUnit"
+			],
+			[
+				"group",
+				"groups"
+			],
+			[
+				"disp",
+				"displayGroups"
+			],
+			[
 				"Unit",
 				"UnitOutput"
 			],
@@ -23,24 +55,24 @@
 			"file": "source/life.html",
 			"settings":
 			{
-				"buffer_size": 802,
-				"line_ending": "Windows"
+				"buffer_size": 1141,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "source/_assets/js/main.js",
 			"settings":
 			{
-				"buffer_size": 1980,
-				"line_ending": "Windows"
+				"buffer_size": 5947,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "source/_assets/js/unit.js",
 			"settings":
 			{
-				"buffer_size": 1440,
-				"line_ending": "Windows"
+				"buffer_size": 1723,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -55,8 +87,8 @@
 			"file": "notes",
 			"settings":
 			{
-				"buffer_size": 518,
-				"line_ending": "Windows"
+				"buffer_size": 974,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -97,7 +129,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 		]
@@ -107,6 +139,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"alert",
 			"get_random_int"
 		],
 		"highlight": true,
@@ -125,7 +158,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -133,15 +166,15 @@
 					"file": "source/life.html",
 					"settings":
 					{
-						"buffer_size": 802,
+						"buffer_size": 1141,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								770,
-								770
+								1039,
+								1039
 							]
 						],
 						"settings":
@@ -160,15 +193,15 @@
 					"file": "source/_assets/js/main.js",
 					"settings":
 					{
-						"buffer_size": 1980,
+						"buffer_size": 5947,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								199,
-								199
+								2691,
+								2691
 							]
 						],
 						"settings":
@@ -177,7 +210,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 791.0,
+						"translation.y": 1913.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -187,15 +220,15 @@
 					"file": "source/_assets/js/unit.js",
 					"settings":
 					{
-						"buffer_size": 1440,
+						"buffer_size": 1723,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								350,
-								350
+								520,
+								520
 							]
 						],
 						"settings":
@@ -204,7 +237,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 195.0,
+						"translation.y": 285.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -240,15 +273,15 @@
 					"file": "notes",
 					"settings":
 					{
-						"buffer_size": 518,
+						"buffer_size": 974,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								518,
-								518
+								0,
+								0
 							]
 						],
 						"settings":

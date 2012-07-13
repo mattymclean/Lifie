@@ -1,6 +1,5 @@
 var units = [];  
 
-var intervalId = null;
 var context;
 var w_width=500;
 var w_height=400;
@@ -13,9 +12,16 @@ var logLevel = 0;
 
 var minutes = 0; //ticks
 
+var mainIntervalId = null;
+var mainIntervalCount = 20;
+var mainIntervalLock = false;
+
+var drawIntervalId = null;
+var drawIntervalCount = 500;
+var drawIntervalLock = false;
+
 function init()
 {
-
   context = world.getContext('2d');
   units = [];
   groups = [];
@@ -23,56 +29,104 @@ function init()
 
   var startCount = get_random_int(1, 20);
   for (var i=0;i < startCount; i++)
-  	units[i] = new Unit();
+  	createUnit();
+
   lifeCount = units.length;
   speciesCount = lifeCount;
 
-  clearInterval(intervalId);
-  intervalId = setInterval(draw,20);
+  start();
+}
+
+function start()
+{
+	clearInterval(mainIntervalId);
+	mainIntervalId = setInterval(process, mainIntervalCount);
+
+	clearInterval(drawIntervalId);
+	drawIntervalId = setInterval(draw, drawIntervalCount);
+}
+
+function stop()
+{
+	clearInterval(mainIntervalId);
+	clearInterval(drawIntervalId);
+}
+
+function process()
+{
+	try
+	{
+		if (mainIntervalLock)
+			return;
+		mainIntervalLock = true;
+
+		minutes++;
+		var len = units.length;
+		for (var i=0;i < len; i++)
+		{
+			if (units[i] == null)
+				continue;
+
+			var output = units[i].process();
+			if (output.duplicate)
+			{
+				createUnit(units[i]);
+
+				if (logLevel < 1)
+					log(units[i], 'duplicate');
+			}
+			if (output.die)
+			{
+				if (logLevel < 1)
+					log(units[i], 'die');
+				
+				killUnit(i);
+			}
+		}
+
+		
+		if (checkForCollisions())
+		{
+			
+		}
+
+		document.getElementById('lifeCount').innerText=lifeCount;
+		document.getElementById('deathCount').innerText=deathCount;
+		document.getElementById('speciesCount').innerText=speciesCount;
+		//alert(unit1.x + ' - ' + unit2.x);
+
+		displayDate();
+		displayGroups();
+	}
+	finally
+	{
+		mainIntervalLock = false;
+	}
 }
 
 function draw()
 {
-	minutes++;
-
-	context.clearRect(0,0, 500,400);
-
-	var len = units.length;
-	for (var i=0;i < len; i++)
+	try
 	{
-		if (units[i] == null)
-			continue;
+		if (drawIntervalLock)
+			return;
+		drawIntervalLock = true;
 
-		var output = units[i].process(context);
-		if (output.duplicate)
+		//log(units[0], units.length);
+		context.clearRect(0,0, 500,400);
+		var len = units.length;
+		for (var i=0;i < len; i++)
 		{
-			createUnit(units[i]);
+			if (units[i] == null)
+				continue;
 
-			if (logLevel < 1)
-				log(units[i], 'duplicate');
-		}
-		if (output.die)
-		{
-			if (logLevel < 1)
-				log(units[i], 'die');
-			
-			killUnit(i);
+			units[i].draw(context);
 		}
 	}
-
-	
-	if (checkForCollisions())
+	finally
 	{
-		
+		drawIntervalLock = false;
 	}
-
-	document.getElementById('lifeCount').innerText=lifeCount;
-	document.getElementById('deathCount').innerText=deathCount;
-	document.getElementById('speciesCount').innerText=speciesCount;
-	//alert(unit1.x + ' - ' + unit2.x);
-
-	displayDate();
-	displayGroups();
 }
 
 function checkForCollisions()
@@ -95,7 +149,8 @@ function checkForCollisions()
 						if (get_random_int(1, 1000) == 1)
 						{							
 							var unit = createUnit();
-							log(units[i], 'mate <div style="width:10px;height:10px;background-color:' + units[k].color + ';border:1px solid #000;float: left;"></div><div style="width:10px;height:10px;background-color:' + unit.color + ';border:1px solid #000;float: left;"></div>');
+							if (logLevel < 2)
+								log(units[i], 'mate <div style="width:10px;height:10px;background-color:' + units[k].color + ';border:1px solid #000;float: left;"></div><div style="width:10px;height:10px;background-color:' + unit.color + ';border:1px solid #000;float: left;"></div>');
 						}
 					}
 					else if (actionNum == 2)
@@ -105,12 +160,14 @@ function checkForCollisions()
 							var actionNum2 = get_random_int(1, 2);
 							if (actionNum2 == 1)
 							{
-								log(units[k], 'kill <div style="width:10px;height:10px;background-color:' + units[i].color + ';border:1px solid #000;float: left;"></div>');
+								if (logLevel < 2)
+									log(units[k], 'kill <div style="width:10px;height:10px;background-color:' + units[i].color + ';border:1px solid #000;float: left;"></div>');
 								killUnit(i);
 							}
 							else
 							{
-								log(units[i], 'kill <div style="width:10px;height:10px;background-color:' + units[k].color + ';border:1px solid #000;float: left;"></div>');
+								if (logLevel < 2)
+									log(units[i], 'kill <div style="width:10px;height:10px;background-color:' + units[k].color + ';border:1px solid #000;float: left;"></div>');
 								killUnit(k);
 							}
 						}
@@ -166,6 +223,15 @@ function createUnit(parentUnit)
 	var currentLen = units.length;
 	units[currentLen] = new Unit(parentUnit);	
 	lifeCount++;
+
+	//add this Unit to group
+	if (groups[units[currentLen].unitType] == null)
+		groups[units[currentLen].unitType] = 1;
+	else
+	{
+		groups[units[currentLen].unitType] = groups[units[currentLen].unitType] + 1;
+	}
+	groupColors[units[currentLen].unitType] = units[currentLen].color;
 	
 	return units[currentLen];
 }
@@ -173,9 +239,10 @@ function createUnit(parentUnit)
 function killUnit(i)
 {
 	groups[units[i].unitType] = groups[units[i].unitType] - 1;
-	units[i] = null;
+	var splicedUnits = units.splice(i, 1);
 	lifeCount--;
 	deathCount++;
+	return splicedUnits[0];
 }
 
 
@@ -192,42 +259,10 @@ function displayDate()
 
 function displayGroups()
 {
-	var sortedList = {};
 	var groupsHTML = '';
 	for (var i=0;i < groups.length;i++)
 		if (groups[i] > 0)
 			groupsHTML += '<div style="width:10px;height:10px;background-color:' + groupColors[i] + ';border:1px solid #000;float: left;"></div> (' + i + ') ' + groups[i] + '<br/>';
 
 	document.getElementById('groups').innerHTML = groupsHTML;
-}
-
-var alertSort = '';
-function sortObj(arr){
-alertSort = '';
-    // Setup Arrays
-
-    var sortedKeys = new Array();
-
-    var sortedObj = {};
-
- 
-
-    // Separate keys and sort them
-
-    for (var i in arr){
-
-        sortedKeys.push(i);
-    }
-
-    sortedKeys.sort();
-
-    // Reconstruct sorted obj based on keys
-    for (var i in sortedKeys){
-
-        sortedObj[sortedKeys[i]] = arr[sortedKeys[i]];
-       alertSort += '<div style="width:10px;height:10px;background-color:' + groupColors[arr[sortedKeys[i]]] + ';border:1px solid #000;float: left;"></div> (' + arr[sortedKeys[i]] + ') ' + sortedKeys[i] + '<br/>';
-		// This line is for demonstration purposes
-    }
-    document.getElementById('groups').innerHTML = alertSort;   // This line is for demonstration purposes
-    return sortedObj;
 }

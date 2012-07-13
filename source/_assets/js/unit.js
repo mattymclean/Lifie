@@ -25,16 +25,6 @@ function Unit (parentUnit) {
 	this.ticks = 0;
 	this.lifespan = get_random_int(1, 6000);
     
-
-	//add this Unit to group
-	if (groups[this.unitType] == null)
-		groups[this.unitType] = 1;
-	else
-	{
-		groups[this.unitType] = groups[this.unitType] + 1;
-	}
-	groupColors[this.unitType] = this.color;
-
 	function UnitOutput(parent)
 	{
 		this.duplicate = (get_random_int(0, 2000) == 1);
@@ -46,18 +36,6 @@ function Unit (parentUnit) {
 	{
 		this.ticks++;
 		var output = new UnitOutput(this);
-		this.draw(context);
-		return output;
-	}
-
-	this.draw = function (context)
-	{
-		context.beginPath();
-		context.fillStyle=this.color;
-		// Draws a circle of radius 20 at the coordinates 100,100 on the canvas
-		context.arc(this.x,this.y,this.size,0,Math.PI*2,true);
-		context.closePath();
-		context.fill();
 		
 		// Boundary Logic
 		if (get_random_int(0, 20) == 1)
@@ -74,6 +52,18 @@ function Unit (parentUnit) {
 				this.y+=dy;
 			}
 		}
+
+		return output;
+	}
+
+	this.draw = function (context)
+	{
+		context.beginPath();
+		context.fillStyle=this.color;
+		// Draws a circle of radius 20 at the coordinates 100,100 on the canvas
+		context.arc(this.x,this.y,this.size,0,Math.PI*2,true);
+		context.closePath();
+		context.fill();
 	}
 }
 
