@@ -1,10 +1,39 @@
-function Unit () {
-	this.color = get_random_color();
+var curId = 0;
+var curTypeId = 0;
+
+var groups = [];
+var groupColors = [];
+
+function Unit (parentUnit) {
+	this.id = curId++;
+	if (parentUnit == null)
+	{
+		this.unitType = curTypeId++;
+		this.color = get_random_color();
+		this.x=get_random_int(0, 500);
+		this.y=get_random_int(0, 400);
+	}
+	else
+	{
+		this.unitType = parentUnit.unitType;
+		this.color = parentUnit.color;
+		this.x = parentUnit.x;
+		this.y = parentUnit.y;
+	}
+
 	this.size = get_random_int(1, 5);
 	this.ticks = 0;
 	this.lifespan = get_random_int(1, 6000);
-    this.x=get_random_int(0, 500);
-	this.y=get_random_int(0, 400);
+    
+
+	//add this Unit to group
+	if (groups[this.unitType] == null)
+		groups[this.unitType] = 1;
+	else
+	{
+		groups[this.unitType] = groups[this.unitType] + 1;
+	}
+	groupColors[this.unitType] = this.color;
 
 	function UnitOutput(parent)
 	{
@@ -31,7 +60,7 @@ function Unit () {
 		context.fill();
 		
 		// Boundary Logic
-		if (get_random_int(0, 200) == 1)
+		if (get_random_int(0, 20) == 1)
 		{
 			var dx=get_random_int(-5, 5);
 			var dy=get_random_int(-5, 5);

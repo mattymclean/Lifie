@@ -11,11 +11,15 @@ var speciesCount = 0;
 
 var logLevel = 0;
 
+var minutes = 0; //ticks
+
 function init()
 {
 
   context = world.getContext('2d');
   units = [];
+  groups = [];
+  groupColors = [];
 
   var startCount = get_random_int(1, 20);
   for (var i=0;i < startCount; i++)
@@ -29,6 +33,8 @@ function init()
 
 function draw()
 {
+	minutes++;
+
 	context.clearRect(0,0, 500,400);
 
 	var len = units.length;
@@ -40,12 +46,7 @@ function draw()
 		var output = units[i].process(context);
 		if (output.duplicate)
 		{
-			var currentLen = units.length;
-			units[currentLen] = new Unit();	
-			units[currentLen].color = units[i].color;
-			units[currentLen].x = units[i].x;
-			units[currentLen].y = units[i].y;
-			lifeCount++;
+			createUnit(units[i]);
 
 			if (logLevel < 1)
 				log(units[i], 'duplicate');
@@ -54,9 +55,8 @@ function draw()
 		{
 			if (logLevel < 1)
 				log(units[i], 'die');
-			units[i] = null; //do this more efficiently
-			lifeCount--;
-			deathCount++;
+			
+			killUnit(i);
 		}
 	}
 
@@ -70,6 +70,9 @@ function draw()
 	document.getElementById('deathCount').innerText=deathCount;
 	document.getElementById('speciesCount').innerText=speciesCount;
 	//alert(unit1.x + ' - ' + unit2.x);
+
+	displayDate();
+	displayGroups();
 }
 
 function checkForCollisions()
@@ -80,7 +83,7 @@ function checkForCollisions()
 		for (var k=0;k < len; k++)
 		{
 			if (i != k && units[i] != null && units[k] != null
-				&& units[i].color != units[k].color //temp part
+				&& units[i].unitType != units[k].unitType //temp part
 				)
 			{
 				if (checkCollision(units[i], units[k]))
@@ -91,13 +94,8 @@ function checkForCollisions()
 					{
 						if (get_random_int(1, 1000) == 1)
 						{							
-							var currentLen = units.length;
-							units[currentLen] = new Unit();
-							//units[currentLen].color = '#' + units[i].color.substring(1, 3) + units[i].color.substring(4, 3);
-							units[currentLen].x = units[i].x;
-							units[currentLen].y = units[i].y;
-							speciesCount++;
-							log(units[i], 'mate <div style="width:10px;height:10px;background-color:' + units[k].color + ';border:1px solid #000;float: left;"></div><div style="width:10px;height:10px;background-color:' + units[currentLen].color + ';border:1px solid #000;float: left;"></div>');
+							var unit = createUnit();
+							log(units[i], 'mate <div style="width:10px;height:10px;background-color:' + units[k].color + ';border:1px solid #000;float: left;"></div><div style="width:10px;height:10px;background-color:' + unit.color + ';border:1px solid #000;float: left;"></div>');
 						}
 					}
 					else if (actionNum == 2)
@@ -108,14 +106,13 @@ function checkForCollisions()
 							if (actionNum2 == 1)
 							{
 								log(units[k], 'kill <div style="width:10px;height:10px;background-color:' + units[i].color + ';border:1px solid #000;float: left;"></div>');
-								units[i] == null;
+								killUnit(i);
 							}
 							else
 							{
 								log(units[i], 'kill <div style="width:10px;height:10px;background-color:' + units[k].color + ';border:1px solid #000;float: left;"></div>');
-								units[k] == null;
+								killUnit(k);
 							}
-							lifeCount--;
 						}
 					}
 
@@ -159,4 +156,78 @@ function log(unit, action)
 		logItem = '<div style="width:10px;height:10px;background-color:' + unit.color + ';border:1px solid #000;float: left;"></div> Unit performed action: (' + action + ')';
 	
 	document.getElementById('log').innerHTML = logItem + '<br/>' + document.getElementById('log').innerHTML;
+}
+
+function createUnit(parentUnit)
+{
+	if (parentUnit == null)
+		speciesCount++;
+	
+	var currentLen = units.length;
+	units[currentLen] = new Unit(parentUnit);	
+	lifeCount++;
+	
+	return units[currentLen];
+}
+
+function killUnit(i)
+{
+	groups[units[i].unitType] = groups[units[i].unitType] - 1;
+	units[i] = null;
+	lifeCount--;
+	deathCount++;
+}
+
+
+function displayDate()
+{
+	var m = minutes;
+
+	var y = Math.floor(minutes / (60 * 24 * 365));
+    var divisor_for_years = minutes % (60 * 24 * 365);
+    var d = Math.floor(divisor_for_years / (60 * 24));
+ 
+	document.getElementById('date').innerText = 'Day ' + d + ' of Year ' + y + ' ABB (After Big Bang)';
+}
+
+function displayGroups()
+{
+	var sortedList = {};
+	var groupsHTML = '';
+	for (var i=0;i < groups.length;i++)
+		if (groups[i] > 0)
+			groupsHTML += '<div style="width:10px;height:10px;background-color:' + groupColors[i] + ';border:1px solid #000;float: left;"></div> (' + i + ') ' + groups[i] + '<br/>';
+
+	document.getElementById('groups').innerHTML = groupsHTML;
+}
+
+var alertSort = '';
+function sortObj(arr){
+alertSort = '';
+    // Setup Arrays
+
+    var sortedKeys = new Array();
+
+    var sortedObj = {};
+
+ 
+
+    // Separate keys and sort them
+
+    for (var i in arr){
+
+        sortedKeys.push(i);
+    }
+
+    sortedKeys.sort();
+
+    // Reconstruct sorted obj based on keys
+    for (var i in sortedKeys){
+
+        sortedObj[sortedKeys[i]] = arr[sortedKeys[i]];
+       alertSort += '<div style="width:10px;height:10px;background-color:' + groupColors[arr[sortedKeys[i]]] + ';border:1px solid #000;float: left;"></div> (' + arr[sortedKeys[i]] + ') ' + sortedKeys[i] + '<br/>';
+		// This line is for demonstration purposes
+    }
+    document.getElementById('groups').innerHTML = alertSort;   // This line is for demonstration purposes
+    return sortedObj;
 }
