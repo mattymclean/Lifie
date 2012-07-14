@@ -1,4 +1,5 @@
-var units = [];  
+var units = [];
+var foods = [];
 
 var context;
 var w_width=500;
@@ -8,7 +9,7 @@ var lifeCount = 0;
 var deathCount = 0;
 var speciesCount = 0;
 
-var logLevel = 0;
+var logLevel = 1;
 
 var minutes = 0; //ticks
 
@@ -22,19 +23,28 @@ var drawIntervalLock = false;
 
 function init()
 {
-  context = world.getContext('2d');
-  units = [];
-  groups = [];
-  groupColors = [];
+	context = document.getElementById('world').getContext('2d');
+	units = [];
+	foods = [];
+	var curId = 0;
+	curTypeId = 0;
+	groups = [];
+	groupColors = [];
+	minutes = 0;
+	deathCount = 0;
 
-  var startCount = get_random_int(1, 20);
-  for (var i=0;i < startCount; i++)
-  	createUnit();
+	var startCount = get_random_int(1, 50);
+	for (var i=0;i < startCount; i++)
+		createUnit();
 
-  lifeCount = units.length;
-  speciesCount = lifeCount;
+	var foodCount = get_random_int(1, 10);
+	for (var i=0;i < foodCount; i++)
+		foods[i] = new Food();
 
-  start();
+	lifeCount = units.length;
+	speciesCount = lifeCount;
+
+	start();
 }
 
 function start()
@@ -61,7 +71,18 @@ function process()
 		mainIntervalLock = true;
 
 		minutes++;
-		var len = units.length;
+
+		var len = foods.length;
+		for (var i=0;i < len; i++)
+		{
+			if (foods[i] == null)
+				continue;
+
+			var output = foods[i].process();
+		}
+
+
+		len = units.length;
 		for (var i=0;i < len; i++)
 		{
 			if (units[i] == null)
@@ -90,42 +111,23 @@ function process()
 			
 		}
 
-		document.getElementById('lifeCount').innerText=lifeCount;
-		document.getElementById('deathCount').innerText=deathCount;
-		document.getElementById('speciesCount').innerText=speciesCount;
-		//alert(unit1.x + ' - ' + unit2.x);
+
+		document.getElementById('lifeCount').innerHTML=lifeCount;
+		document.getElementById('deathCount').innerHTML=deathCount;
+		document.getElementById('speciesCount').innerHTML=speciesCount;
+		
 
 		displayDate();
 		displayGroups();
+		displayFoods();
+	}
+	catch(ex)
+	{
+		throw ex;
 	}
 	finally
 	{
 		mainIntervalLock = false;
-	}
-}
-
-function draw()
-{
-	try
-	{
-		if (drawIntervalLock)
-			return;
-		drawIntervalLock = true;
-
-		//log(units[0], units.length);
-		context.clearRect(0,0, 500,400);
-		var len = units.length;
-		for (var i=0;i < len; i++)
-		{
-			if (units[i] == null)
-				continue;
-
-			units[i].draw(context);
-		}
-	}
-	finally
-	{
-		drawIntervalLock = false;
 	}
 }
 
@@ -134,6 +136,16 @@ function checkForCollisions()
 	var len = units.length;
 	for (var i=0;i < len; i++)
 	{
+		var foodLen = foods.length;
+		for (var f=0;f < foodLen; f++)
+			if (checkCollision(units[i], foods[f]))
+			{
+				var bite = units[i].healthMax - units[i].health;
+
+				foods[f].eat(bite);
+				units[i].health = units[i].health + bite;
+			}
+
 		for (var k=0;k < len; k++)
 		{
 			if (i != k && units[i] != null && units[k] != null
@@ -204,6 +216,45 @@ function checkCollision(unit1, unit2)
 	return true;
 }
 
+function draw()
+{
+	try
+	{
+		if (drawIntervalLock)
+			return;
+		drawIntervalLock = true;
+
+		//log(units[0], units.length);
+		context.clearRect(0,0, 500,400);
+		
+		var len = foods.length;
+		for (var i=0;i < len; i++)
+		{
+			if (foods[i] == null)
+				continue;
+
+			foods[i].draw(context);
+		}
+
+		len = units.length;
+		for (var i=0;i < len; i++)
+		{
+			if (units[i] == null)
+				continue;
+
+			units[i].draw(context);
+		}
+	}
+	catch(ex)
+	{
+		throw ex;
+	}
+	finally
+	{
+		drawIntervalLock = false;
+	}
+}
+
 function log(unit, action)
 {
 	var logItem = '';
@@ -253,8 +304,10 @@ function displayDate()
 	var y = Math.floor(minutes / (60 * 24 * 365));
     var divisor_for_years = minutes % (60 * 24 * 365);
     var d = Math.floor(divisor_for_years / (60 * 24));
+    var divisor_for_days = minutes % (60 * 24);
+    var h = Math.floor(divisor_for_days / (60));
  
-	document.getElementById('date').innerText = 'Day ' + d + ' of Year ' + y + ' ABB (After Big Bang)';
+	document.getElementById('date').innerHTML = 'Hour ' + h + ' of Day ' + d + ' of Year ' + y + ' ABB (After Big Bang)';
 }
 
 function displayGroups()
@@ -262,7 +315,16 @@ function displayGroups()
 	var groupsHTML = '';
 	for (var i=0;i < groups.length;i++)
 		if (groups[i] > 0)
-			groupsHTML += '<div style="width:10px;height:10px;background-color:' + groupColors[i] + ';border:1px solid #000;float: left;"></div> (' + i + ') ' + groups[i] + '<br/>';
+			groupsHTML += '<div style="width:10px;height:10px;background-color:' + groupColors[i] + ';border:1px solid #000;float: left;font-size:8px;">' + i + '</div> ' + groups[i] + '<br/>';
 
 	document.getElementById('groups').innerHTML = groupsHTML;
+}
+
+function displayFoods()
+{
+	var foodsHTML = '';
+	for (var i=0;i < foods.length;i++)
+		foodsHTML += '<div style="width:10px;height:10px;background-color:' + foods[i].color + ';border:1px solid #000;float: left;font-size:8px;">' + i + '</div> ' + foods[i].foodCount + ' (' + foods[i].regenCurrent + '=>' + foods[i].regenFoodAmount + ')<br/>';
+
+	document.getElementById('foods').innerHTML = foodsHTML;
 }

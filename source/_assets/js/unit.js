@@ -12,6 +12,8 @@ function Unit (parentUnit) {
 		this.color = get_random_color();
 		this.x=get_random_int(0, 500);
 		this.y=get_random_int(0, 400);
+		this.healthMax = get_random_int(100, 3000);
+		this.health = this.healthMax;
 	}
 	else
 	{
@@ -19,26 +21,39 @@ function Unit (parentUnit) {
 		this.color = parentUnit.color;
 		this.x = parentUnit.x;
 		this.y = parentUnit.y;
+		this.healthMax = parentUnit.healthMax;
+		if (parentUnit.healthMax == parentUnit.health)
+			this.health = parentUnit.health + get_random_int(1, 1000); // bonus
+		else
+			this.health = parentUnit.health + get_random_int(1, 500); //random chance of being healthier than parent
 	}
 
 	this.size = get_random_int(1, 5);
 	this.ticks = 0;
 	this.lifespan = get_random_int(1, 6000);
+	this.wanderRate = get_random_int(1, 50);
+
+
     
 	function UnitOutput(parent)
 	{
-		this.duplicate = (get_random_int(0, 2000) == 1);
-		this.die = (parent.ticks > parent.lifespan);
-		//log(parent, 'test: ' + parent.ticks + ' / ' + parent.lifespan)
+		this.duplicate = false;
+		if (parent.health > (parent.healthMax/2))
+			this.duplicate = (get_random_int(1, 1500) == 1);
+		else
+			this.duplicate = (get_random_int(1, 6000) == 1);
+		
+		this.die = (parent.ticks > parent.lifespan) || (parent.health < 0);
 	}
 
-	this.process = function (context)
+	this.process = function ()
 	{
+		this.health--;
 		this.ticks++;
 		var output = new UnitOutput(this);
 		
 		// Boundary Logic
-		if (get_random_int(0, 20) == 1)
+		if (get_random_int(0, this.wanderRate) == 1)
 		{
 			var dx=get_random_int(-5, 5);
 			var dy=get_random_int(-5, 5);
