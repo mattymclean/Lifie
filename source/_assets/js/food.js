@@ -1,7 +1,8 @@
 function Food () {
 	this.color = get_random_color();
-	this.x=get_random_int(0, 500);
-	this.y=get_random_int(0, 400);
+	this.x=get_random_int(0, w_width);
+	this.y=get_random_int(0, w_height);
+	//alert(this.x, this.y);
 	
 	this.ticks = 0;
 
@@ -11,7 +12,7 @@ function Food () {
 	this.regenRate = get_random_int(50, 2000);
 	this.regenCurrent = this.regenRate;
 
-	this.size = this.size = 0;
+	this.size = 0;
 
 	function FoodOutput(parent)
 	{

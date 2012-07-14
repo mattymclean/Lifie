@@ -2,8 +2,8 @@ var units = [];
 var foods = [];
 
 var context;
-var w_width=500;
-var w_height=400;
+var w_width=1000;
+var w_height=800;
 
 var lifeCount = 0;
 var deathCount = 0;
@@ -21,9 +21,21 @@ var drawIntervalId = null;
 var drawIntervalCount = 500;
 var drawIntervalLock = false;
 
+function initSystem()
+{
+	var world = document.getElementById('world');
+	world.width = w_width;
+	world.height = w_height;
+	context = world.getContext('2d');
+	var back = document.getElementById('back');
+	back.style.width = w_width;
+	back.style.height = w_height;
+}
+setTimeout(initSystem, 2000);
+
 function init()
 {
-	context = document.getElementById('world').getContext('2d');
+	
 	units = [];
 	foods = [];
 	var curId = 0;
@@ -158,7 +170,7 @@ function checkForCollisions()
 					var actionNum = get_random_int(1, 2);
 					if (actionNum == 1)
 					{
-						if (get_random_int(1, 1000) == 1)
+						if (get_random_int(1, 600) == 1)
 						{							
 							var unit = createUnit();
 							if (logLevel < 2)
@@ -225,7 +237,7 @@ function draw()
 		drawIntervalLock = true;
 
 		//log(units[0], units.length);
-		context.clearRect(0,0, 500,400);
+		context.clearRect(0,0, w_width,w_height);
 		
 		var len = foods.length;
 		for (var i=0;i < len; i++)

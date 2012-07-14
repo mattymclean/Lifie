@@ -10,8 +10,8 @@ function Unit (parentUnit) {
 	{
 		this.unitType = curTypeId++;
 		this.color = get_random_color();
-		this.x=get_random_int(0, 500);
-		this.y=get_random_int(0, 400);
+		this.x=get_random_int(0, w_width);
+		this.y=get_random_int(0, w_height);
 		this.healthMax = get_random_int(100, 3000);
 		this.health = this.healthMax;
 	}
@@ -42,7 +42,7 @@ function Unit (parentUnit) {
 			this.duplicate = (get_random_int(1, 1500) == 1);
 		else
 			this.duplicate = (get_random_int(1, 6000) == 1);
-		
+
 		this.die = (parent.ticks > parent.lifespan) || (parent.health < 0);
 	}
 
@@ -59,9 +59,9 @@ function Unit (parentUnit) {
 			var dy=get_random_int(-5, 5);
 
 			if(!((this.x<=0 && dx < 0)  
-				|| (this.x>=500 && dx > 0) 
+				|| (this.x>=w_width && dx > 0) 
 				|| (this.y<=0 && dy < 0) 
-				|| (this.y>=400 && dy > 0)))
+				|| (this.y>=w_height && dy > 0)))
 			{
 				this.x+=dx;
 				this.y+=dy;
