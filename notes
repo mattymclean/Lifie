@@ -1,6 +1,7 @@
 http://stackoverflow.com/questions/10396991/clearing-circular-regions-from-html5-canvas
 
 Todo
+- Go to food if hungry?
 - Cell modes: passive, defensive, agressive / veggie-omni-carni (if carni => bigger live longer? roam around?)
 - If two cells touching they mate not duplicate
 - Two cells cannot be on top of each other? --Actually maybe that makes sense!!
