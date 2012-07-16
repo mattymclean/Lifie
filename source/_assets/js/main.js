@@ -45,11 +45,11 @@ function init()
 	minutes = 0;
 	deathCount = 0;
 
-	var startCount = get_random_int(1, 50);
+	var startCount = get_random_int(25, 100);
 	for (var i=0;i < startCount; i++)
 		createUnit();
 
-	var foodCount = get_random_int(1, 10);
+	var foodCount = get_random_int(1, 20);
 	for (var i=0;i < foodCount; i++)
 		foods[i] = new Food();
 
