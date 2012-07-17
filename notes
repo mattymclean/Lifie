@@ -22,8 +22,11 @@ Trait Ideas
  - Big (requires more food but better fighter?) / small (requires less food but worse fighter?)
 
  References
+  - Properties: http://johndyer.name/native-browser-get-set-properties-in-javascript/
   - http://gamemath.com/
   - Random shapes: http://stackoverflow.com/questions/8431000/canvas-random-curved-shapes / http://jsfiddle.net/EnZX4/
+                   http://www.html5canvastutorials.com/tutorials/html5-canvas-shape-fill/
+                   
 
   Super Future
   - Migration

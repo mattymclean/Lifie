@@ -2,25 +2,27 @@
 <head>
 	<title>Life</title>
 	<link rel="stylesheet" href="_assets/css/default.css" />
-	<script type="text/javascript" src="_assets/js/food.js"></script>
-	<script type="text/javascript" src="_assets/js/unit.js"></script>
-	<script type="text/javascript" src="_assets/js/main.js"></script>
+	<script type="text/javascript" src="_assets/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="_assets/js/m/food.js"></script>
+	<script type="text/javascript" src="_assets/js/m/unit.js"></script>
+	<script type="text/javascript" src="_assets/js/v/ui.js"></script>
+	<script type="text/javascript" src="_assets/js/c/main.js"></script>
 </head>
-<body>
+<body style="width:100%;height:100%;">
 
 
-<div style="width:100%;height:50px;">
+<div style="width:100%;height:8%;">
 	<a href="#" onclick="init()">Start World</a><br/>
 	 <span id='date'></span>
 </div>
-<div style="width:70%;height:100%;float:left;">
+<div style="width:80%;height:92%;float:left;overflow:scroll;">
 	<div id="back" style="background-color:#000;width:500px;height:400px;">
 		<canvas id='world' width="500" height="400" style="border:solid 1px white;"></canvas>
 	</div>
 </div>
-<div style="width:30%;height:100%;float:right;">
-	Unit Types:<div id='groups'></div>
-	Food Types:<div id='foods'></div>
+<div style="width:20%;height:92%;float:right;overflow-y:scroll;">
+	<a id="unitLabel" href="javascript:void($('#groups').toggle())">Unit Types:</a><br/><div id='groups'></div>
+	<a id="foodLabel" href="javascript:void($('#foods').toggle())">Food Types:</a><br/><div id='foods'></div>
 	Life count: <span id='lifeCount'></span><br/>
 	Death count: <span id='deathCount'></span><br/>
 	Species count: <span id='speciesCount'></span><br/>

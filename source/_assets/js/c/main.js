@@ -51,11 +51,11 @@ function init()
 	minutes = 0;
 	deathCount = 0;
 
-	var startCount = get_random_int(25, 100);
+	var startCount = get_random_int(25, 200);
 	for (var i=0;i < startCount; i++)
 		createUnit();
 
-	var foodCount = get_random_int(1, 20);
+	var foodCount = get_random_int(1, 40);
 	for (var i=0;i < foodCount; i++)
 		foods[i] = new Food();
 
@@ -84,7 +84,6 @@ function process()
 {
 	try
 	{
-		alert(2);
 		if (mainIntervalLock)
 			return;
 		mainIntervalLock = true;
@@ -124,16 +123,14 @@ function process()
 			}
 		}
 
-		alert(1);
 		if (checkForCollisions())
 		{
 			
 		}
 
-		alert(lifeCount);
-		document.getElementById('lifeCount').innerHTML = lifeCount;
-		document.getElementById('deathCount').innerHTML = deathCount;
-		document.getElementById('speciesCount').innerHTML = speciesCount;
+		$('#lifeCount').html(lifeCount);
+		$('#deathCount').html(deathCount);
+		$('#speciesCount').html(speciesCount);
 		
 		displayDate();
 		displayGroups();
@@ -200,7 +197,7 @@ function checkForCollisions()
 					{
 						if (get_random_int(1, 600) == 1)
 						{							
-							var unit = createUnit();
+							var unit = createUnit(units[i], units[k]);
 							if (logLevel < 2)
 								log(units[i], 'mate <div style="width:10px;height:10px;background-color:' + units[k].color + ';border:1px solid #000;float: left;"></div><div style="width:10px;height:10px;background-color:' + unit.color + ';border:1px solid #000;float: left;"></div>');
 						}
@@ -311,13 +308,13 @@ function log(unit, action)
 	document.getElementById('log').innerHTML = logItem + '<br/>' + document.getElementById('log').innerHTML;
 }
 
-function createUnit(parentUnit)
+function createUnit(parentUnit, parentUnit2)
 {
-	if (parentUnit == null)
+	if (parentUnit == null || parentUnit2 != null)
 		speciesCount++;
 	
 	var currentLen = units.length;
-	units[currentLen] = new Unit(parentUnit);	
+	units[currentLen] = new Unit(parentUnit, parentUnit2);	
 	lifeCount++;
 
 	//add this Unit to group
@@ -335,6 +332,8 @@ function createUnit(parentUnit)
 function killUnit(i)
 {
 	groups[units[i].unitType] = groups[units[i].unitType] - 1;
+	if (groups[units[i].unitType] < 1)
+		log(units[i], 'extinct')
 	var splicedUnits = units.splice(i, 1);
 	lifeCount--;
 	deathCount++;
@@ -357,19 +356,25 @@ function displayDate()
 
 function displayGroups()
 {
+	var count = 0;
 	var groupsHTML = '';
 	for (var i=0;i < groups.length;i++)
 		if (groups[i] > 0)
+		{
 			groupsHTML += '<div style="width:10px;height:10px;background-color:' + groupColors[i] + ';border:1px solid #000;float: left;font-size:8px;">' + i + '</div> ' + groups[i] + '<br/>';
+			count++;
+		}
 
-	document.getElementById('groups').innerHTML = groupsHTML;
+	$('#groups').html(groupsHTML);
+	$('#unitLabel').html('Unit Types (' + count + '):');
 }
 
 function displayFoods()
 {
+	$('#foodLabel').html('Food Types (' + foods.length + '):');
 	var foodsHTML = '';
 	for (var i=0;i < foods.length;i++)
 		foodsHTML += '<div style="width:10px;height:10px;background-color:' + foods[i].color + ';border:1px solid #000;float: left;font-size:8px;">' + i + '</div> ' + foods[i].foodCount + ' (' + foods[i].regenCurrent + '=>' + foods[i].regenFoodAmount + ')<br/>';
 
-	document.getElementById('foods').innerHTML = foodsHTML;
+	$('#foods').html(foodsHTML);
 }
