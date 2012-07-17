@@ -1,13 +1,28 @@
 function LifeSim () {
+	var units = [];
+	var groups = [];
+	var groupColors = [];
+
+	var foods = [];
+
+	var context;
+	
+	function initSystem()
+	{
+		var world = document.getElementById('world');
+		world.width = w_width;
+		world.height = w_height;
+		context = world.getContext('2d');
+		var back = document.getElementById('back');
+		back.style.width = w_width;
+		back.style.height = w_height;
+	}
 
 }
 var _LifeSim = new LifeSim();
+_LifeSim.init()
 
 
-var units = [];
-var foods = [];
-
-var context;
 var w_width=1000;
 var w_height=800;
 
@@ -27,16 +42,7 @@ var drawIntervalId = null;
 var drawIntervalCount = 500;
 var drawIntervalLock = false;
 
-function initSystem()
-{
-	var world = document.getElementById('world');
-	world.width = w_width;
-	world.height = w_height;
-	context = world.getContext('2d');
-	var back = document.getElementById('back');
-	back.style.width = w_width;
-	back.style.height = w_height;
-}
+
 setTimeout(initSystem, 2000);
 
 function init()

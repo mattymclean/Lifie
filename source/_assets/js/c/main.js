@@ -1,69 +1,46 @@
 function LifeSim () {
+	this.ui = null;
+	this.data = null;
+	this.settings = null;
+	this.stats = null;
 
+	this.mainIntervalId = null;
+	this.mainIntervalLock = false;
+
+	this.drawIntervalId = null;
+	this.drawIntervalLock = false;
+
+	function init()
+	{
+		this.ui = new UI(this.settings.gameWidth, this.settings.gameHeight);
+	}
+
+	function initGame()
+	{
+		this.data = new Data();
+		this.settings = new Settings();
+		this.stats = new Stats();
+
+		var curId = 0;
+		curTypeId = 0;
+		
+		var startCount = get_random_int(25, 200);
+		for (var i=0;i < startCount; i++)
+			createUnit();
+
+		var foodCount = get_random_int(1, 40);
+		for (var i=0;i < foodCount; i++)
+			foods[i] = new Food();
+
+		lifeCount = units.length;
+		speciesCount = lifeCount;
+
+		start();
+	}
 }
+
 var _LifeSim = new LifeSim();
-
-
-var units = [];
-var foods = [];
-
-var context;
-var w_width=1000;
-var w_height=800;
-
-var lifeCount = 0;
-var deathCount = 0;
-var speciesCount = 0;
-
-var logLevel = 1;
-
-var minutes = 0; //ticks
-
-var mainIntervalId = null;
-var mainIntervalCount = 20;
-var mainIntervalLock = false;
-
-var drawIntervalId = null;
-var drawIntervalCount = 500;
-var drawIntervalLock = false;
-
-function initSystem()
-{
-	var world = document.getElementById('world');
-	world.width = w_width;
-	world.height = w_height;
-	context = world.getContext('2d');
-	var back = document.getElementById('back');
-	back.style.width = w_width;
-	back.style.height = w_height;
-}
-setTimeout(initSystem, 2000);
-
-function init()
-{
-	
-	units = [];
-	foods = [];
-	var curId = 0;
-	curTypeId = 0;
-	groups = [];
-	groupColors = [];
-	minutes = 0;
-	deathCount = 0;
-
-	var startCount = get_random_int(25, 200);
-	for (var i=0;i < startCount; i++)
-		createUnit();
-
-	var foodCount = get_random_int(1, 40);
-	for (var i=0;i < foodCount; i++)
-		foods[i] = new Food();
-
-	lifeCount = units.length;
-	speciesCount = lifeCount;
-
-	start();
-}
+$(document).ready(_LifeSim.init)
 
 function start()
 {

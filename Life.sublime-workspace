@@ -4,40 +4,36 @@
 		"selected_items":
 		[
 			[
-				"move",
-				"moveDistance"
+				"mainInterval",
+				"mainIntervalLock"
 			],
 			[
-				"ytes",
-				"yTest"
+				"drawInterv",
+				"drawIntervalLock"
 			],
 			[
-				"hea",
-				"healthMax"
+				"draw",
+				"drawIntervalLock"
 			],
 			[
-				"foo",
-				"foodCount"
-			],
-			[
-				"re",
-				"regenRate"
-			],
-			[
-				"time",
-				"time2"
-			],
-			[
-				"l",
+				"le",
 				"length"
 			],
 			[
-				"ac",
-				"actionNum2"
+				"sp",
+				"splicedUnits"
 			],
 			[
-				"acti",
-				"actionNum"
+				"pa",
+				"parentUnit"
+			],
+			[
+				"group",
+				"groups"
+			],
+			[
+				"disp",
+				"displayGroups"
 			],
 			[
 				"Unit",
@@ -55,62 +51,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "source/life.html",
-			"settings":
-			{
-				"buffer_size": 1556,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/_assets/js/c/main.js",
-			"settings":
-			{
-				"buffer_size": 8393,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/_assets/js/v/ui.js",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/_assets/js/m/unit.js",
-			"settings":
-			{
-				"buffer_size": 3696,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/_assets/js/m/food.js",
-			"settings":
-			{
-				"buffer_size": 1378,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/_assets/css/default.css",
-			"settings":
-			{
-				"buffer_size": 65,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "notes",
-			"settings":
-			{
-				"buffer_size": 1454,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -136,6 +76,11 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Bobo/Documents/GitHub/Lifie/notes",
+		"/C/Users/Bobo/Documents/GitHub/Lifie/source/_assets/css/default.css",
+		"/C/Users/Bobo/Documents/GitHub/Lifie/source/_assets/js/unit.js",
+		"/C/Users/Bobo/Documents/GitHub/Lifie/source/_assets/js/main.js",
+		"/C/Users/Bobo/Documents/GitHub/Lifie/source/life.html",
 		"/C/Users/Matt/Documents/GitHub/Lifie/Life.sublime-project",
 		"/C/Users/Matt/Documents/GitHub/Lifie/notes",
 		"/C/Users/Matt/Documents/GitHub/Lifie/source/js/classes/unit.js",
@@ -159,12 +104,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"400",
-			"500",
-			"400",
-			"logLevel",
-			" = null",
-			"= null",
+			"alert",
 			"get_random_int"
 		],
 		"highlight": true,
@@ -183,195 +123,8 @@
 	"groups":
 	[
 		{
-			"selected": 6,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "source/life.html",
-					"settings":
-					{
-						"buffer_size": 1556,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								934,
-								923
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "source/_assets/js/c/main.js",
-					"settings":
-					{
-						"buffer_size": 8393,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7012,
-								7012
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4274.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "source/_assets/js/v/ui.js",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "source/_assets/js/m/unit.js",
-					"settings":
-					{
-						"buffer_size": 3696,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1378,
-								1397
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 238.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "source/_assets/js/m/food.js",
-					"settings":
-					{
-						"buffer_size": 1378,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								129,
-								129
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "source/_assets/css/default.css",
-					"settings":
-					{
-						"buffer_size": 65,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								65,
-								65
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "notes",
-					"settings":
-					{
-						"buffer_size": 1454,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1170,
-								1170
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
