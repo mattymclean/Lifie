@@ -1,67 +1,27 @@
-function Food () {
-	this.color = get_random_color();
-	this.x=get_random_int(0, w_width);
-	this.y=get_random_int(0, w_height);
-	//alert(this.x, this.y);
-	
-	this.ticks = 0;
+function Food () 
+{
+	this._settings = new SettingsBase();
 
-	this.foodMax = get_random_int(1, 100000);
-	this.foodCount = get_random_int(1, 50000);
-	this.regenFoodAmount = get_random_int(1000, 10000);
-	this.regenRate = get_random_int(50, 2000);
-	this.regenCurrent = this.regenRate;
+	this.init = function(parent)
+	{
+		this.ticks = 0;
 
-	this.size = 0;
+		parent._settings.CreateSetting(parent, 'color', parent.settingTypes.color, 'Food Color', null);
+		parent._settings.CreateSetting(parent, 'x', parent.settingTypes.intRange, 'Food X', 0, w_width);
+		parent._settings.CreateSetting(parent, 'y', parent.settingTypes.intRange, 'Food Y', 0, w_height);
+
+		parent._settings.CreateSetting(parent, 'foodMax', parent.settingTypes.intRange, 'Food Max', 1, 100000);
+		parent._settings.CreateSetting(parent, 'foodCount', parent.settingTypes.intRange, 'Food Count', 1, 50000);
+		parent._settings.CreateSetting(parent, 'regenRate', parent.settingTypes.intRange, 'Food Regeneration Rate', 50, 2000);
+		parent._settings.CreateSetting(parent, 'regenFoodAmount', parent.settingTypes.intRange, 'Food Regeneration Amount', 1000, 10000);
+		
+		this.regenCurrent = this.regenRate;
+		this.size = 0;
+	}
+	this.init(this);
 
 	function FoodOutput(parent)
 	{
 		
-	}
-
-	this.process = function ()
-	{
-		this.ticks++;
-		this.regenCurrent--;
-		if (this.regenCurrent <= 0)
-		{
-			if (this.foodCount < this.foodMax)
-				this.foodCount += this.regenFoodAmount;
-			this.regenCurrent = this.regenRate;
-		}
-		this.updateSize();
-		var output = new FoodOutput(this);
-		
-		return output;
-	}
-
-	this.draw = function (context)
-	{
-		context.beginPath();
-		context.fillStyle=this.color;
-		// Draws a circle of radius 20 at the coordinates 100,100 on the canvas
-		context.arc(this.x,this.y,this.size,0,Math.PI*2,true);
-		context.closePath();
-		context.fill();
-	}
-
-	this.eat = function(amount)
-	{
-		this.foodCount = this.foodCount - amount;
-		
-		if (get_random_int(1, 1000) == 1) //chance to spread
-			this.regenCurrent--;
-
-		if (this.foodCount < 0)
-			this.foodCount = 0;
-	}
-
-	this.updateSize = function()
-	{
-		var size = this.foodCount / 500;
-		if (size > 100)
-			this.size = 100;
-		else 
-			this.size = size;
 	}
 }

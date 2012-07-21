@@ -3,20 +3,30 @@
 	<title>Life</title>
 	<link rel="stylesheet" href="_assets/css/default.css" />
 	<script type="text/javascript" src="_assets/js/jquery-1.7.2.min.js"></script>
+
 	<script type="text/javascript" src="_assets/js/m/food.js"></script>
 	<script type="text/javascript" src="_assets/js/m/unit.js"></script>
 	<script type="text/javascript" src="_assets/js/m/data.js"></script>
 	<script type="text/javascript" src="_assets/js/m/stats.js"></script>
+	<script type="text/javascript" src="_assets/js/m/settingsBase.js"></script>
+	<script type="text/javascript" src="_assets/js/m/settingBase.js"></script>
 	<script type="text/javascript" src="_assets/js/m/settings.js"></script>
-	<script type="text/javascript" src="_assets/js/m/setting.js"></script>
+
 	<script type="text/javascript" src="_assets/js/v/ui.js"></script>
+
+	<script type="text/javascript" src="_assets/js/c/enums.js"></script>
+	<script type="text/javascript" src="_assets/js/c/utils.js"></script>
+	<script type="text/javascript" src="_assets/js/c/collisionController.js"></script>
+	<script type="text/javascript" src="_assets/js/c/foodController.js"></script>
+	<script type="text/javascript" src="_assets/js/c/logController.js"></script>
+	<script type="text/javascript" src="_assets/js/c/unitController.js"></script>
 	<script type="text/javascript" src="_assets/js/c/main.js"></script>
 </head>
 <body style="width:100%;height:100%;">
 
 
 <div style="width:100%;height:8%;">
-	<a href="#" onclick="init()">Start World</a><br/>
+	<a href="#" onclick="_LifeSim.initGame(_LifeSim)">Start World</a><br/>
 	 <span id='date'></span>
 </div>
 <div style="width:80%;height:92%;float:left;overflow:scroll;">

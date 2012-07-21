@@ -4,36 +4,56 @@
 		"selected_items":
 		[
 			[
-				"mainInterval",
-				"mainIntervalLock"
+				"int",
+				"intRange"
 			],
 			[
-				"drawInterv",
-				"drawIntervalLock"
+				"Coll",
+				"collision"
 			],
 			[
-				"draw",
-				"drawIntervalLock"
+				"get",
+				"GetUnitsList"
 			],
 			[
-				"le",
+				"getRando",
+				"get_random_color"
+			],
+			[
+				"move",
+				"moveDistance"
+			],
+			[
+				"ytes",
+				"yTest"
+			],
+			[
+				"hea",
+				"healthMax"
+			],
+			[
+				"foo",
+				"foodCount"
+			],
+			[
+				"re",
+				"regenRate"
+			],
+			[
+				"time",
+				"time2"
+			],
+			[
+				"l",
 				"length"
 			],
 			[
-				"sp",
-				"splicedUnits"
+				"ac",
+				"actionNum2"
 			],
 			[
-				"pa",
-				"parentUnit"
-			],
-			[
-				"group",
-				"groups"
-			],
-			[
-				"disp",
-				"displayGroups"
+				"acti",
+				"actionNum"
 			],
 			[
 				"Unit",
@@ -51,6 +71,137 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "source/life.html",
+			"settings":
+			{
+				"buffer_size": 2467,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/c/main.js",
+			"settings":
+			{
+				"buffer_size": 2660,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/m/settings.js",
+			"settings":
+			{
+				"buffer_size": 990,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/c/enums.js",
+			"settings":
+			{
+				"buffer_size": 300,
+				"line_ending": "Windows",
+				"name": "function Enums()"
+			}
+		},
+		{
+			"file": "source/_assets/js/m/settingsBase.js",
+			"settings":
+			{
+				"buffer_size": 463,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/m/settingBase.js",
+			"settings":
+			{
+				"buffer_size": 1077,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/c/collisionController.js",
+			"settings":
+			{
+				"buffer_size": 3549,
+				"line_ending": "Windows",
+				"name": "function CollisionController"
+			}
+		},
+		{
+			"file": "source/_assets/js/v/ui.js",
+			"settings":
+			{
+				"buffer_size": 3360,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/c/logController.js",
+			"settings":
+			{
+				"buffer_size": 187,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/m/data.js",
+			"settings":
+			{
+				"buffer_size": 448,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/c/unitController.js",
+			"settings":
+			{
+				"buffer_size": 2832,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/c/foodController.js",
+			"settings":
+			{
+				"buffer_size": 997,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/m/unit.js",
+			"settings":
+			{
+				"buffer_size": 3090,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/m/food.js",
+			"settings":
+			{
+				"buffer_size": 996,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/m/stats.js",
+			"settings":
+			{
+				"buffer_size": 298,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/_assets/js/c/utils.js",
+			"settings":
+			{
+				"buffer_size": 459,
+				"line_ending": "Windows",
+				"name": "function Utils()"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -76,13 +227,14 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Bobo/Documents/GitHub/Lifie/notes",
-		"/C/Users/Bobo/Documents/GitHub/Lifie/source/_assets/css/default.css",
-		"/C/Users/Bobo/Documents/GitHub/Lifie/source/_assets/js/unit.js",
-		"/C/Users/Bobo/Documents/GitHub/Lifie/source/_assets/js/main.js",
-		"/C/Users/Bobo/Documents/GitHub/Lifie/source/life.html",
-		"/C/Users/Matt/Documents/GitHub/Lifie/Life.sublime-project",
+		"/C/Users/Matt/Documents/GitHub/Lifie/source/_assets/js/v/ui.js",
+		"/C/Users/Matt/Documents/GitHub/Lifie/source/_assets/js/m/settingsBase.js",
+		"/C/Users/Matt/Documents/GitHub/Lifie/source/_assets/js/c/enums.js",
+		"/C/Users/Matt/Documents/GitHub/Lifie/source/_assets/js/m/unit.js",
+		"/C/Users/Matt/Documents/GitHub/Lifie/source/_assets/js/m/food.js",
+		"/C/Users/Matt/Documents/GitHub/Lifie/source/_assets/css/default.css",
 		"/C/Users/Matt/Documents/GitHub/Lifie/notes",
+		"/C/Users/Matt/Documents/GitHub/Lifie/Life.sublime-project",
 		"/C/Users/Matt/Documents/GitHub/Lifie/source/js/classes/unit.js",
 		"/C/Users/Matt/Documents/GitHub/Lifie/source/life.html",
 		"/C/Users/Matt/Documents/Life/life.html",
@@ -104,7 +256,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"alert",
+			"parent",
+			"createUnit",
+			"400",
+			"500",
+			"400",
+			"logLevel",
+			" = null",
+			"= null",
 			"get_random_int"
 		],
 		"highlight": true,
@@ -113,6 +272,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"lifeSim"
 		],
 		"reverse": false,
 		"show_context": false,
@@ -123,8 +283,442 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "source/life.html",
+					"settings":
+					{
+						"buffer_size": 2467,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1407,
+								1407
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "source/_assets/js/c/main.js",
+					"settings":
+					{
+						"buffer_size": 2660,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1266,
+								1266
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 317.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "source/_assets/js/m/settings.js",
+					"settings":
+					{
+						"buffer_size": 990,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								916,
+								916
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "source/_assets/js/c/enums.js",
+					"settings":
+					{
+						"buffer_size": 300,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								298,
+								298
+							]
+						],
+						"settings":
+						{
+							"auto_name": "function Enums()",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "source/_assets/js/m/settingsBase.js",
+					"settings":
+					{
+						"buffer_size": 463,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								329,
+								329
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "source/_assets/js/m/settingBase.js",
+					"settings":
+					{
+						"buffer_size": 1077,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								743,
+								743
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "source/_assets/js/c/collisionController.js",
+					"settings":
+					{
+						"buffer_size": 3549,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								31,
+								31
+							]
+						],
+						"settings":
+						{
+							"auto_name": "function CollisionController",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "source/_assets/js/v/ui.js",
+					"settings":
+					{
+						"buffer_size": 3360,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2074,
+								2074
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "source/_assets/js/c/logController.js",
+					"settings":
+					{
+						"buffer_size": 187,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								125,
+								125
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "source/_assets/js/m/data.js",
+					"settings":
+					{
+						"buffer_size": 448,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								434,
+								434
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "source/_assets/js/c/unitController.js",
+					"settings":
+					{
+						"buffer_size": 2832,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1962,
+								1962
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 882.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "source/_assets/js/c/foodController.js",
+					"settings":
+					{
+						"buffer_size": 997,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								602,
+								602
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "source/_assets/js/m/unit.js",
+					"settings":
+					{
+						"buffer_size": 3090,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3088,
+								3088
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 994.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "source/_assets/js/m/food.js",
+					"settings":
+					{
+						"buffer_size": 996,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								879,
+								879
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "source/_assets/js/m/stats.js",
+					"settings":
+					{
+						"buffer_size": 298,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								209,
+								209
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "source/_assets/js/c/utils.js",
+					"settings":
+					{
+						"buffer_size": 459,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								249,
+								249
+							]
+						],
+						"settings":
+						{
+							"auto_name": "function Utils()",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -161,7 +755,7 @@
 	"menu_visible": true,
 	"replace":
 	{
-		"height": 0.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -184,6 +778,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 178.0,
 	"status_bar_visible": true
 }

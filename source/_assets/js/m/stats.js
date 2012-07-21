@@ -1,12 +1,17 @@
-function Stats()
+function Stats(unitCount, foodCount)
 {
-	function init()
+	function init(parent, unitCount, foodCount)
 	{
 		this.minutes = 0;
 
-		this.lifeCount = 0;
+		parent.stats.lifeCount = unitCount;
 		this.deathCount = 0;
-		this.speciesCount = 0;
+		parent.stats.speciesCount = unitCount;
 	}
-	this.init();
+	this.init(parent, unitCount, foodCount);
+
+	function tick()
+	{
+		this.minutes++;
+	}
 }

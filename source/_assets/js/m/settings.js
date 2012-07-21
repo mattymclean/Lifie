@@ -1,30 +1,24 @@
 function Settings()
 {
-	this.settings = {};
+	this._settings = new SettingsBase();
 
-	function init() 
+	this.init = function (parent) 
 	{
-		this.settings = {};
-
 		//General
-		CreateSetting('logLevel', 'Log Level', 1);
-		CreateSetting('gameWidth', 'Game Width', 1000);
-		CreateSetting('gameHeight', 'Game Height', 800);
+		parent._settings.CreateSetting(parent, 'logLevel', _LifeSim.enums.settingTypes.int, 'Log Level', 1);
+		parent._settings.CreateSetting(parent, 'gameWidth', _LifeSim.enums.settingTypes.int, 'Game Width', 1000);
+		parent._settings.CreateSetting(parent, 'gameHeight', _LifeSim.enums.settingTypes.int, 'Game Height', 800);
 
 		//Performance
-		CreateSetting('mainIntervalCount', 'Main Interval Count', 20);
-		CreateSetting('drawIntervalCount', 'Main Interval Count', 500);
+		parent._settings.CreateSetting(parent, 'mainIntervalCount', _LifeSim.enums.settingTypes.int, 'Main Interval Count', 20);
+		parent._settings.CreateSetting(parent, 'drawIntervalCount', _LifeSim.enums.settingTypes.int, 'Main Interval Count', 500);
 
+		//Units
+		parent._settings.CreateSetting(parent, 'unitStartCount', _LifeSim.enums.settingTypes.intRange, 'Unit Start Count', 25, 200);
+		
+
+		//Food
+		parent._settings.CreateSetting(parent, 'foodStartCount', _LifeSim.enums.settingTypes.intRange, 'Food Start Count', 1, 40);
 	}
-	init();
-
-	function CreateSetting(key, name, defaultValue)
-	{
-		this.setting['logLevel'] = new Setting(key, name, defaultValue);
-
-		Object.defineProperty(parent, 'key', {
-     		get: function() { return this.settings[key]; },
-     		set: function(value) { this.settings[key] = value;}
-		});
-	}
+	this.init(this);
 }
