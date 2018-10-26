@@ -1,0 +1,50 @@
+<html>
+<head>
+	<title>Life</title>
+	<link rel="stylesheet" href="_assets/css/default.css" />
+	<script type="text/javascript" src="_assets/js/jquery-1.7.2.min.js"></script>
+
+	<script type="text/javascript" src="_assets/js/m/food.js"></script>
+	<script type="text/javascript" src="_assets/js/m/unit.js"></script>
+	<script type="text/javascript" src="_assets/js/m/data.js"></script>
+	<script type="text/javascript" src="_assets/js/m/stats.js"></script>
+	<script type="text/javascript" src="_assets/js/m/settingsBase.js"></script>
+	<script type="text/javascript" src="_assets/js/m/settingBase.js"></script>
+	<script type="text/javascript" src="_assets/js/m/settings.js"></script>
+
+	<script type="text/javascript" src="_assets/js/v/ui.js"></script>
+
+	<script type="text/javascript" src="_assets/js/c/enums.js"></script>
+	<script type="text/javascript" src="_assets/js/c/utils.js"></script>
+	<script type="text/javascript" src="_assets/js/c/collisionController.js"></script>
+	<script type="text/javascript" src="_assets/js/c/foodController.js"></script>
+	<script type="text/javascript" src="_assets/js/c/logController.js"></script>
+	<script type="text/javascript" src="_assets/js/c/unitController.js"></script>
+	<script type="text/javascript" src="_assets/js/c/main.js"></script>
+</head>
+<body style="width:100%;height:100%;">
+
+
+<div style="width:100%;height:8%;">
+	<a href="#" onclick="_LifeSim.initGame(_LifeSim)">Start World</a><br/>
+	 <span id='date'></span>
+</div>
+<div style="width:80%;height:92%;float:left;overflow:scroll;">
+	<div id="back" style="background-color:#000;width:500px;height:400px;">
+		<canvas id='world' width="500" height="400" style="border:solid 1px white;"></canvas>
+	</div>
+</div>
+<div style="width:20%;height:92%;float:right;overflow-y:scroll;">
+	<a id="unitLabel" href="javascript:void($('#groups').toggle())">Unit Types:</a><br/><div id='groups'></div>
+	<a id="foodLabel" href="javascript:void($('#foods').toggle())">Food Types:</a><br/><div id='foods'></div>
+	Life count: <span id='lifeCount'></span><br/>
+	Death count: <span id='deathCount'></span><br/>
+	Species count: <span id='speciesCount'></span><br/>
+	<br/>
+	<a href="javascript:void(document.getElementById('log').innerHTML='')">clear</a> - <a href="javascript:void(logLevel=1)">less</a> - <a href="javascript:void(logLevel=0)">more</a> - <a href="javascript:void(logLevel=2)">none</a><br />
+	Log:
+	<div id="log" style="height:400px;overflow-y:scroll;"></div>
+</div>
+
+</body>
+</html>
