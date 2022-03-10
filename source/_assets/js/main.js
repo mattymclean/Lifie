@@ -21,6 +21,16 @@ var drawIntervalId = null;
 var drawIntervalCount = 500;
 var drawIntervalLock = false;
 
+//temp
+function getPosition(event) {
+	var rect = canvas.getBoundingClientRect();
+	return {
+		x: event.clientX - rect.left,
+		y: event.clientY - rect.top
+	};
+	}
+  //temp
+
 function initSystem()
 {
 	var world = document.getElementById('world');
@@ -30,6 +40,13 @@ function initSystem()
 	var back = document.getElementById('back');
 	back.style.width = w_width;
 	back.style.height = w_height;
+
+	world.addEventListener('dblclick', function(e){ 
+		var rect = world.getBoundingClientRect();
+		var x = e.clientX - rect.left;
+		var y = e.clientY - rect.top;
+		createUnit(null, x, y);
+	});
 }
 setTimeout(initSystem, 2000);
 
@@ -42,6 +59,7 @@ function init()
 	curTypeId = 0;
 	groups = [];
 	groupColors = [];
+	groupNames = [];
 	minutes = 0;
 	deathCount = 0;
 
@@ -123,6 +141,12 @@ function process()
 			
 		}
 
+		//TEMP: testing adding random food
+		if (get_random_int(1, 5000) == 1)
+		{
+			foods.push(new Food());
+		}
+		//TEMP
 
 		document.getElementById('lifeCount').innerHTML=lifeCount;
 		document.getElementById('deathCount').innerHTML=deathCount;
@@ -170,16 +194,32 @@ function checkForCollisions()
 					var actionNum = get_random_int(1, 2);
 					if (actionNum == 1)
 					{
-						if (get_random_int(1, 600) == 1)
-						{							
-							var unit = createUnit();
+						if (get_random_int(1, 50) == 1)
+						{	
+							var babyName = units[i].name.split(' ')[0] + ' ' + units[k].name.split(' ')[1];
+							console.log(units[i].name + ' + ' + units[k].name + ' = ' + babyName);
+
+							//hack
+							var foundParent = null;
+							var ul = units.length;
+							for (var u=0;u < ul; u++)
+							{
+								if (units[u] == null) continue;
+								if (units[u].name == babyName) foundParent = units[u];
+								console.log(units[u].name + ' == ' + babyName);
+							}
+							var unit = foundParent ? createUnit(foundParent) : createUnit(null, null, null, babyName);
+							console.log('foundParent: ' + foundParent);
+							//hack
+						
+							var unit = foundParent ? createUnit(foundParent) : createUnit(null, null, null, babyName);
 							if (logLevel < 2)
 								log(units[i], 'mate <div style="width:10px;height:10px;background-color:' + units[k].color + ';border:1px solid #000;float: left;"></div><div style="width:10px;height:10px;background-color:' + unit.color + ';border:1px solid #000;float: left;"></div>');
 						}
 					}
 					else if (actionNum == 2)
 					{
-						if (get_random_int(1, 10) == 1)
+						if (get_random_int(1, 50) == 1)
 						{
 							var actionNum2 = get_random_int(1, 2);
 							if (actionNum2 == 1)
@@ -278,13 +318,13 @@ function log(unit, action)
 	document.getElementById('log').innerHTML = logItem + '<br/>' + document.getElementById('log').innerHTML;
 }
 
-function createUnit(parentUnit)
+function createUnit(parentUnit, x, y, name)
 {
 	if (parentUnit == null)
 		speciesCount++;
 	
 	var currentLen = units.length;
-	units[currentLen] = new Unit(parentUnit);	
+	units[currentLen] = new Unit(parentUnit, x, y, name);	
 	lifeCount++;
 
 	//add this Unit to group
@@ -295,6 +335,7 @@ function createUnit(parentUnit)
 		groups[units[currentLen].unitType] = groups[units[currentLen].unitType] + 1;
 	}
 	groupColors[units[currentLen].unitType] = units[currentLen].color;
+	groupNames[units[currentLen].unitType] = units[currentLen].name;
 	
 	return units[currentLen];
 }
@@ -325,9 +366,12 @@ function displayDate()
 function displayGroups()
 {
 	var groupsHTML = '';
+
+	//need to group the array together so I can sort
+
 	for (var i=0;i < groups.length;i++)
 		if (groups[i] > 0)
-			groupsHTML += '<div style="width:10px;height:10px;background-color:' + groupColors[i] + ';border:1px solid #000;float: left;font-size:8px;">' + i + '</div> ' + groups[i] + '<br/>';
+			groupsHTML += '<div style="width:10px;height:10px;background-color:' + groupColors[i] + ';border:1px solid #000;float: left;font-size:8px;">' + i + '</div> ' + groups[i] + ': ' + groupNames[i] + ' (Since: 0 Mated: Y)<br/>';
 
 	document.getElementById('groups').innerHTML = groupsHTML;
 }
